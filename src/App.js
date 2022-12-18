@@ -1,24 +1,24 @@
-import logo from './logo.svg';
 import './App.css';
+import Products from './component/Products';
+import Home from './component/Home';
+import Cart from './component/Cart';
 
 function App() {
+    const { pathname } = window.location;
+
+    let Component;
+    if (pathname === '/products') {
+        Component = Products;
+    } else if (pathname === '/cart') {
+        Component = Cart;
+    } else {
+        Component = Home;
+    }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <section>
+        <Component />
+    </section>
   );
 }
 
